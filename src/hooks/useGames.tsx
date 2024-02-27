@@ -10,8 +10,8 @@ export interface Platform {
 
 export interface Game {
   id: number;
-  name: String;
-  background_image: String;
+  name: string;
+  background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
 }
@@ -35,7 +35,7 @@ const useGames = () => {
         if (err instanceof CanceledError) return;
         setErrors(err.message);
       });
-    return () => controller.abort;
+    return () => controller.abort();
   }, []);
   return { games, erros };
 };
