@@ -1,8 +1,29 @@
-import { HStack, Image, List, ListItem, Text } from '@chakra-ui/react';
+import {
+  Box,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+  Text,
+} from '@chakra-ui/react';
 import useGenres, { Genre } from '../hooks/useGenres';
 
 const GenreList = () => {
   const { data, isLoading, erros } = useGenres();
+
+  if (isLoading)
+    return (
+      <>
+        <SkeletonText paddingY={3} />
+        <SkeletonText paddingY={3} />
+        <SkeletonText paddingY={3} />
+        <SkeletonText paddingY={3} />
+        <SkeletonText paddingY={3} />
+      </>
+    );
 
   return (
     <>
