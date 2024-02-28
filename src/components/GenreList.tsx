@@ -11,9 +11,10 @@ import useGenres, { Genre } from '../hooks/useGenres';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading } = useGenres();
 
   if (isLoading)
@@ -39,6 +40,7 @@ const GenreList = ({ onSelectGenre }: Props) => {
                 src={data.image_background}
               />
               <Button
+                fontWeight={data.id === selectedGenre?.id ? 'bold' : 'normal'}
                 onClick={() => {
                   onSelectGenre(data);
                   console.log(data.name);
